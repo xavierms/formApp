@@ -45,12 +45,17 @@ export class DinamicosComponent implements OnInit {
 this.persona.favoritos.splice(index, 1)
   }
   agregarJuego(){
-    console.log('agrego');
     const nuevoJuegoFav: Favorito ={
       id: this.persona.favoritos.length + 1,
       nombre: this.nuevoJuego
     }
-  this.persona.favoritos.push(nuevoJuegoFav)
-  this.nuevoJuego='';
+    
+    if (this.nuevoJuego !== '') {
+      console.log('agrego');
+      this.persona.favoritos.push(nuevoJuegoFav)
+      this.nuevoJuego='';
+    }
+    
+    
   }
 }
