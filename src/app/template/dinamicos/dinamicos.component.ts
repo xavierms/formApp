@@ -29,6 +29,8 @@ export class DinamicosComponent implements OnInit {
  }
 
   ngOnInit(): void {
+    
+    
   }
   nombreValido(): boolean{
     return this.miFormulario?.controls.nombre?.invalid 

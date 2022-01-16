@@ -33,7 +33,8 @@ if (this.miFormulario.invalid  ) {
   return ;
   
 }
-  console.log(this.miFormulario.value);
+console.log(this.miFormulario.value);
+this.miFormulario.reset();
 }
 
 }

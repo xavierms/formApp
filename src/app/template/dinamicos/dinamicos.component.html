@@ -51,12 +51,16 @@
           class="form-control "
           required
         />
+      
         <button class="btn btn-outline-danger" 
                 type="button"
-                (click)="eliminar(i)">Eliminar</button>
-                <div *ngIf="persona.favoritos.length ==0">
-                   <p> No hay favoritos!</p>
-                </div>
+                (click)="eliminar(i)">
+                Eliminar
+              </button>
+                
+      </div>
+      <div class="mt-2" *ngIf="!persona.favoritos.length">
+        <p> No hay favoritos!</p>
       </div>
     </div>
   </div>
@@ -77,3 +81,7 @@
 
 <span>Persona</span>
 <pre>{{ persona | json }}</pre>
+
+<div class="ok" *ngIf="!persona.favoritos.length">
+  <p> No hay favoritos!</p>
+</div>
