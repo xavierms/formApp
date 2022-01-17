@@ -2,7 +2,7 @@
 <hr>
 
 
-<form >
+<form [formGroup]="miFormulario">
     <!-- Radio -->
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Género</label>
@@ -11,6 +11,7 @@
                 <input class="form-check-input" 
                        type="radio" 
                        value="M"
+                       formControlName="genero"
                        id="radioMasculino"
                        >
                 <label class="form-check-label" for="radioMasculino">
@@ -22,6 +23,8 @@
                 <input class="form-check-input" 
                        type="radio" 
                        value="F"
+                       formControlName="genero"
+
                        id="radioFemenino" 
                        >
                 <label class="form-check-label" for="radioFemenino">
@@ -39,6 +42,8 @@
                 <input class="form-check-input"
                        type="checkbox" 
                        role="switch" 
+                       formControlName="notificaciones"
+
                        id="flexSwitchCheckChecked"
                        >
                 <label class="form-check-label" for="flexSwitchCheckChecked">Quiero recibir notificaciones</label>
@@ -53,6 +58,7 @@
         <div class="form-check mt-2">
             <input class="form-check-input"
                    type="checkbox" 
+                   formControlName="condiciones"
                    id="flexCheckDefault"
                    >
             <label class="form-check-label" for="flexCheckDefault">
@@ -74,7 +80,7 @@
 
 </form>
 
-<!-- <h5>Valor del formulario</h5>
+<h5>Valor del formulario</h5>
 <pre>{{ miFormulario.value | json}}</pre>
 <br>
 
@@ -88,7 +94,11 @@
 
 
 <h5>Terminos</h5>
-<pre>{{ miFormulario.controls?.terminos?.errors | json}}</pre> -->
+<pre>{{ miFormulario.controls?.terminos?.errors | json}}</pre>
+<br>
+
+<h5>Prestine</h5>
+<pre>{{ miFormulario.controls?.pristine | json}}</pre>
 <br>
 
 <pre>Condiciones: </pre>
