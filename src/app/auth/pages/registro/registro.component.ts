@@ -16,12 +16,17 @@ export class RegistroComponent implements OnInit {
   nombreApellidoPattern: string = '([a-zA-ZÀ-ÿ]+) ([a-zA-ZÀ-ÿ]+)';
   
   miFormulario: FormGroup = this.fb.group({
-    nombre: ['', [Validators.required, Validators.pattern(this.nombreApellidoPattern) ]]
+    nombre: ['', [Validators.required, Validators.pattern(this.nombreApellidoPattern) ]],
+    email : ['', [Validators.required, Validators.pattern(this.nombreApellidoPattern) ]]
   })
 
   campoNoValido(campo: string){
     return this.miFormulario.get(campo)?.invalid
-           && this.miFormulario.get(campo)?.touched
-     
+           && this.miFormulario.get(campo)?.touched 
+  }
+  submitForm(){
+    console.log(this.miFormulario.value);
+    this.miFormulario.markAllAsTouched();
+    
   }
 }
