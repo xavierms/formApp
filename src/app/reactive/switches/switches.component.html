@@ -2,7 +2,7 @@
 <hr>
 
 
-<form [formGroup]="miFormulario">
+<form [formGroup]="miFormulario" (ngSubmit)="guardar()">
     <!-- Radio -->
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Género</label>
@@ -71,7 +71,8 @@
 <!-- Boton submit -->
 <div class="row">
     <div class="col">
-        <button class="btn btn-primary float-end"
+        <button type="submit"
+                class="btn btn-primary float-end"
                 >
             Guardar
         </button>
@@ -92,6 +93,10 @@
 <pre>{{ miFormulario.valid | json}}</pre>
 <br>
 
+
+<div *ngFor="let form of persona">
+<div>{{form.genero}}</div>
+</div>
 
 <h5>Terminos</h5>
 <pre>{{ miFormulario.controls?.terminos?.errors | json}}</pre>
