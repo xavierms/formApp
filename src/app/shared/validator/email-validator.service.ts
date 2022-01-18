@@ -6,6 +6,7 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { delay, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,15 @@ export class EmailValidatorService implements AsyncValidator {
     const email = control.value;
     console.log(email);
 
-    return this.http.get<any[]>(`http://localhost:3000/usuarios?q=${ email }`);
+    return this.http.get<any[]>(`http://localhost:3000/usuarios?q=${ email }`)
+                    .pipe(
+                      // delay(2000),
+                      map(resp =>{
+                        return (resp.length ===0)
+                        ? null
+                        : {emailTomado: true}
+                      })
+                    );
+
   }
 }

@@ -21,8 +21,10 @@ export class RegistroComponent implements OnInit {
   ngOnInit(): void {
     this.miFormulario.reset({
       nombre: 'Xavier Mejia',
-      email : 'xms@mail.com',  
-      username: 'xavier08'
+      email : 'test1@test.com',  
+      username: 'xavier08',
+      password: 123456,
+      cPassword: 123456
     })
   }
 
@@ -37,11 +39,42 @@ export class RegistroComponent implements OnInit {
   
   })
 
+ get emailErrorMsg(): string{
+const errors = this.miFormulario.get('email')?.errors;
+
+   if (errors?.required) {
+     return 'El correo es obligatorio'
+   }
+   else if(errors?.pattern){
+     return 'El valor no tiene formato de correo';
+   }
+   else if(errors?.emailTomado){
+     return 'El email ya existe'
+   }
+   return ''
+ }
   campoNoValido(campo: string){
     return this.miFormulario.get(campo)?.invalid
            && this.miFormulario.get(campo)?.touched 
   }
+  
+  // emailRequired(){
+  //   return this.miFormulario.get('email')?.errors?.required
+  //   && this.miFormulario.get('email')?.touched 
+  // } 
+  // emailFormato(){
+  //   return this.miFormulario.get('email')?.errors?.pattern
+  //   && this.miFormulario.get('email')?.touched 
+  // }
+  // emailTomado(){
+  //   return this.miFormulario.get('email')?.errors?.emailTomado
+  //   && this.miFormulario.get('email')?.touched 
+  // }
+  
   submitForm(){
+
+    console.log(this.miFormulario.value);
+    
     this.miFormulario.markAllAsTouched();
   }
 }
